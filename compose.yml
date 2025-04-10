@@ -11,14 +11,10 @@ services:
       - 8005:8005
     networks:
       - frases-network
-    develop:
-      watch:
-        - action: sync
-          path: ./frases.txt
-          target: /app/frases.txt
-        - action: sync+restart
-          path: ./main.py
-          target: /app/main.py
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
 
 networks:
   frases-network:
